@@ -1,4 +1,4 @@
-module.exports = function(require, name, def){
+function requireOptional(require, name, def){
   try {
     return require(name)
   } catch (e) {
@@ -9,3 +9,11 @@ module.exports = function(require, name, def){
     }
   }
 }
+
+module.exports = function(require){
+  return function(name, def){
+    return requireOptional(require, name, def)
+  }
+}
+
+module.exports.raw = requireOptional
