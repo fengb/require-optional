@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Benjamin Feng",
   "license": "MIT",
+  "homepage": "https://github.com/fengb/require-optional",
   "scripts": {
     "test": "mocha"
   },
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/fengb/require-optional/issues"
   },
-  "homepage": "https://github.com/fengb/require-optional"
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0"
+  }
 }
