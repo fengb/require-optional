@@ -1,6 +1,6 @@
 function requireOptional(require, name, def){
   try {
-    return require(name)
+    require.resolve(name)
   } catch (e) {
     if(e.code === 'MODULE_NOT_FOUND'){
       return def
@@ -8,6 +8,8 @@ function requireOptional(require, name, def){
       throw e
     }
   }
+
+  return require(name)
 }
 
 module.exports = function(require){
