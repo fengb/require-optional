@@ -1,4 +1,4 @@
-module.exports = function(name, def){
+module.exports = function(require, name, def){
   try {
     return require(name)
   } catch (e) {
