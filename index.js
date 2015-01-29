@@ -1,15 +1,18 @@
-function requireOptional(require, name, def){
+function requireExists(require, name){
   try {
     require.resolve(name)
+    return true
   } catch (e) {
     if(e.code === 'MODULE_NOT_FOUND'){
-      return def
+      return false
     } else {
       throw e
     }
   }
+}
 
-  return require(name)
+function requireOptional(require, name, def){
+  return requireExists(require, name) ? require(name) : def
 }
 
 module.exports = function(require){
