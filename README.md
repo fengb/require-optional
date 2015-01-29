@@ -1,4 +1,4 @@
-# require-optional
+# require-optional [![Build Status][travis-image]][travis-url]
 
 Optionally require modules
 
@@ -32,3 +32,6 @@ if (optDep) {
 var optDep = requireOptional('dep', function(){})
 optDep('processing')
 ```
+
+[travis-image]: https://img.shields.io/travis/fengb/require-optional.svg?style=flat
+[travis-url]: https://travis-ci.org/fengb/require-optional
