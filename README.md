@@ -1,6 +1,6 @@
-# require-optional [![Build Status][travis-image]][travis-url]
+# require-optional [![NPM Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-Optionally require modules
+Require optional modules
 
 ## Usage
 
@@ -33,5 +33,7 @@ var optDep = requireOptional('dep', function(){})
 optDep('processing')
 ```
 
+[npm-image]: https://img.shields.io/npm/v/require-optional.svg?style=flat
+[npm-url]: https://npmjs.org/package/require-optional
 [travis-image]: https://img.shields.io/travis/fengb/require-optional.svg?style=flat
 [travis-url]: https://travis-ci.org/fengb/require-optional
