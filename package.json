@@ -1,0 +1,23 @@
+{
+  "name": "require-optional",
+  "version": "0.0.1",
+  "description": "Require optional modules",
+  "main": "index.js",
+  "author": "Benjamin Feng",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fengb/require-optional"
+  },
+  "keywords": [
+    "require",
+    "optional"
+  ],
+  "bugs": {
+    "url": "https://github.com/fengb/require-optional/issues"
+  },
+  "homepage": "https://github.com/fengb/require-optional"
+}
