@@ -1,7 +1,5 @@
 # require-optional [![NPM Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-Require optional modules
-
 ## Usage
 
 Install via npm:
