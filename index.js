@@ -1,6 +1,9 @@
-function requireExists(require, name){
+var callsite = require('callsite')
+var path = require('path')
+
+function moduleExists(modulePath){
   try {
-    require.resolve(name)
+    require.resolve(modulePath)
     return true
   } catch (e) {
     if(e.code === 'MODULE_NOT_FOUND'){
@@ -11,25 +14,11 @@ function requireExists(require, name){
   }
 }
 
-function requireOptional(require, name, def){
-  return requireExists(require, name) ? require(name) : def
-}
-
-function isRequire(val){
-  return !!val.resolve
-}
-
-module.exports = function(arg1, arg2, arg3){
-  if(!isRequire(arg1)){
-    // use local require since it's the best we have
-    return requireOptional(require, arg1, arg2)
+module.exports = function(modulePath, def){
+  if(modulePath.indexOf('.') === 0){
+    var caller = callsite()[1]
+    modulePath = path.dirname(caller.getFileName()) + '/' + modulePath
   }
 
-  if(arg2 != undefined){
-    return requireOptional(arg1, arg2, arg3)
-  }
-
-  return function(name, def){
-    return requireOptional(arg1, name, def)
-  }
+  return moduleExists(modulePath) ? require(modulePath) : def
 }
