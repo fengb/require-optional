@@ -11,29 +11,23 @@ $ npm install require-optional
 Basic usage:
 
 ```javascript
-var optDep = require('require-optional')('dep')
+var requireOptional = require('require-optional')
+var optDep = requireOptional('dep')
 if (optDep) {
   /* do stuff with optDep */
 }
 ```
 
-`require-optional` can also return a default value:
+`require-optional` can return a default value:
 
 ```javascript
-var optDep = require('require-optional')('dep', function(){})
+var optDep = requireOptional('dep', function(){})
 optDep('processing')
 ```
 
-Requiring relative files takes a bit of fugliness due to relative paths:
+`require-optional` can also require relative modules:
 
 ```javascript
-var optDep = require('require-optional')(require, './dep')
-```
-
-There is an alternate call to make this look a bit more sane:
-
-```javascript
-var requireOptional = require('require-optional')(require)
 var optDep = requireOptional('./dep')
 ```
 
