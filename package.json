@@ -1,6 +1,6 @@
 {
   "name": "require-optional",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Require optional modules",
   "main": "index.js",
   "author": "Benjamin Feng",
@@ -20,11 +20,11 @@
   "bugs": {
     "url": "https://github.com/fengb/require-optional/issues"
   },
+  "dependencies": {
+    "module-resolve-as-caller": "~0.1.0"
+  },
   "devDependencies": {
     "chai": "^1.10.0",
     "mocha": "^2.1.0"
-  },
-  "dependencies": {
-    "callsite": "^1.0.0"
   }
 }

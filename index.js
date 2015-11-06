@@ -1,9 +1,8 @@
-var callsite = require('callsite')
-var path = require('path')
+var moduleResolveAsCaller = require('module-resolve-as-caller')
 
-function moduleExists(modulePath){
+function moduleExists(path){
   try {
-    require.resolve(modulePath)
+    require.resolve(path)
     return true
   } catch (e) {
     if(e.code === 'MODULE_NOT_FOUND'){
@@ -14,11 +13,7 @@ function moduleExists(modulePath){
   }
 }
 
-module.exports = function(modulePath, def){
-  if(modulePath.indexOf('.') === 0){
-    var caller = callsite()[1]
-    modulePath = path.dirname(caller.getFileName()) + '/' + modulePath
-  }
-
-  return moduleExists(modulePath) ? require(modulePath) : def
+module.exports = function(path, def){
+  path = moduleResolveAsCaller(path)
+  return moduleExists(path) ? require(path) : def
 }
