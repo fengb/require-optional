@@ -21,8 +21,16 @@ if (optDep) {
 `require-optional` can return a default value:
 
 ```javascript
-var optDep = requireOptional('dep', function(){})
+var optDep = requireOptional('dep', function () {})
 optDep('processing')
+```
+
+`require-optional` accepts an error callback for when the module is not found:
+
+```javascript
+requireOptional('dep', null, function (err) {
+  console.warn(err)
+})
 ```
 
 `require-optional` can also require relative modules:
