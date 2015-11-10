@@ -1,4 +1,8 @@
-var expect = require('chai').expect
+var chai = require('chai')
+             .use(require('sinon-chai'))
+var expect = chai.expect
+
+var sinon = require('sinon')
 var requireOptional = require('..')
 
 var def = function(){}
@@ -10,13 +14,24 @@ describe('requireOptional()', function(){
       expect(requireOptional('mocha')).to.equal(fromRequire)
     })
 
-    it('returns default value if module does not exist', function(){
-      expect(requireOptional('missing', def)).to.equal(def)
-    })
-
     it('requires relative modules', function(){
       var fromRequire = require('../package.json')
       expect(requireOptional('../package.json')).to.equal(fromRequire)
+    })
+
+    context('missing', function(){
+      it('returns default value', function(){
+        expect(requireOptional('missing', def)).to.equal(def)
+      })
+
+      it('calls error function if passed in', function(){
+        var cb = sinon.spy()
+        requireOptional('missing', null, cb)
+        expect(cb).to.have.been.calledWithMatch({
+          code: 'MODULE_NOT_FOUND',
+          message: "Cannot find module 'missing'",
+        })
+      })
     })
   })
 })

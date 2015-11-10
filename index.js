@@ -1,19 +1,23 @@
 var moduleResolveAsCaller = require('module-resolve-as-caller')
 
-function moduleExists(path){
+function moduleResolveError (path) {
   try {
     require.resolve(path)
-    return true
-  } catch (e) {
-    if(e.code === 'MODULE_NOT_FOUND'){
-      return false
-    } else {
-      throw e
-    }
+    return null
+  } catch (err) {
+    return err
   }
 }
 
-module.exports = function(path, def){
+module.exports = function (path, def, errorCb) {
   path = moduleResolveAsCaller(path)
-  return moduleExists(path) ? require(path) : def
+  var err = moduleResolveError(path)
+  if (err) {
+    if (errorCb) {
+      errorCb(err)
+    }
+    return def
+  } else {
+    return require(path)
+  }
 }
