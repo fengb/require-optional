@@ -1,6 +1,6 @@
 {
   "name": "require-optional",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Require optional modules",
   "main": "index.js",
   "author": "Benjamin Feng",
